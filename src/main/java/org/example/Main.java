@@ -68,6 +68,8 @@ NY BRUGER:
  - Igangværende ny bruger
  - Sluttede ny bruger
 
+
+ Sketch made in Miro.com
 ***/
 
 public class Main {
