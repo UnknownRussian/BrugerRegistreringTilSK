@@ -1,14 +1,13 @@
 package org.example.listeners;
 
-import org.example.panels.PanelCheckList;
-import org.example.panels.PanelCreateUser;
+import org.example.frames.FrameCreateUser;
 import org.example.panels.PanelMenu;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class CustomActionListener implements ActionListener {
+public class MenuActionListener implements ActionListener {
     private JPanel panelMenu, panelCreateUser, panelCheckList;
 
     public void setPanelMenu(JPanel panelMenu) {
@@ -33,14 +32,18 @@ public class CustomActionListener implements ActionListener {
 
     private PanelMenu panelMenuClass;
 
-    public CustomActionListener(){
+    public MenuActionListener(){
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == panelMenuClass.buttonCreateUser){
-            panelCreateUser.setVisible(true);
-            panelMenu.setVisible(false);
+            new FrameCreateUser();
+        }
+        if(e.getSource() == panelMenuClass.buttonExit){
+            int dialogBtn = JOptionPane.showConfirmDialog(null, "Vil du lukke programmet?","Afslut",JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
+            if(dialogBtn == JOptionPane.YES_OPTION)
+                System.exit(0);
         }
     }
 

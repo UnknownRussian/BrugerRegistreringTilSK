@@ -1,17 +1,14 @@
 package org.example.panels;
 
-import org.example.frames.FrameMain;
-import org.example.listeners.CustomActionListener;
+import org.example.listeners.MenuActionListener;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class PanelMenu extends JPanel {
     public JButton buttonCreateUser, buttonShowStartedProgress, buttonShowEndedProgress, buttonSettings, buttonExit;
 
-    public PanelMenu(CustomActionListener customActionListener){
+    public PanelMenu(MenuActionListener menuActionListener){
         setLayout(new GridLayout(5,1,0,25));
         setPreferredSize(new Dimension(550,725));
 
@@ -21,8 +18,9 @@ public class PanelMenu extends JPanel {
         buttonSettings = new JButton("Indstillinger");
         buttonExit = new JButton("Afslut program");
 
-        buttonCreateUser.addActionListener(customActionListener);
-        customActionListener.setPanelMenuClass(this);
+        buttonCreateUser.addActionListener(menuActionListener);
+        buttonExit.addActionListener(menuActionListener);
+        menuActionListener.setPanelMenuClass(this);
 
         add(buttonCreateUser);
         add(buttonShowStartedProgress);

@@ -1,6 +1,7 @@
 package org.example;
 
-import org.example.frames.FrameMain;
+import org.example.frames.FrameCreateUser;
+import org.example.frames.FrameMenu;
 
 /***
  MUST HAVE:
@@ -77,6 +78,6 @@ NY BRUGER:
 
 public class Main {
     public static void main(String[] args) {
-        new FrameMain();
+        new FrameMenu();
     }
 }
