@@ -1,15 +1,19 @@
 package org.example;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import org.example.panels.PanelCreateUserOption;
 import org.example.panels.PanelOptionToAdd;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import javax.swing.*;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.prefs.Preferences;
 
 public class OptionJSONFormatter {
     private ArrayList<PanelOptionToAdd> optionsToAdd;
@@ -33,9 +37,20 @@ public class OptionJSONFormatter {
             addedOption.put("button", "{"+option.getButton()+"}");
             addedOption.put("panel", "{"+option.getPanel()+"}");
             optionsToAddJSONArray.add(addedOption);
+
+            Gson gson = new Gson();
+            String jsonString = gson.toJson(option);
+            System.out.println(jsonString);
+            PanelOptionToAdd option1 = gson.fromJson(jsonString, PanelOptionToAdd.class);
+            System.out.println("Text from GSON: "+option1.getTextField().getText());
+
+            Preferences userPref = Preferences.userRoot();
+            userPref.put("textField", option.getTextField().toString());
+
+
         }
         saveJSON("optionsToAdd.json", optionsToAddJSONArray);
-        getOptionsToAddData();
+        //getOptionsToAddData();
     }
 
     public void saveCreateUserOptionsToJSONArray() throws Exception {
@@ -68,7 +83,15 @@ public class OptionJSONFormatter {
         Object object = parser.parse(reader);
         JSONArray jsonArray = (JSONArray) object;
         jsonArray.forEach(option -> {
-
+            //This will give error! XD
+            JSONObject jsonObject = (JSONObject) option;
+            String tempStr = (String) jsonObject.get("textField");
+            tempStr = tempStr.replace("{","");
+            tempStr = tempStr.replace("}","");
+            System.out.println(tempStr);
+            Object obj = (Object) tempStr;
+            JTextField textField = (JTextField) obj;
+            System.out.println(textField.getText());
         });
     }
 }

@@ -30,6 +30,7 @@ public class FrameCreateUser extends JFrame {
         buttonStart = new JButton("Start");
         buttonSave = new JButton("Gem");
         buttonCancel = new JButton("Annuller");
+
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         buttonPanel.add(buttonStart);
         buttonPanel.add(buttonSave);

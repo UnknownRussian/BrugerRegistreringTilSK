@@ -1,6 +1,8 @@
 package org.example.frames;
 
+import org.example.OptionJSONFormatter;
 import org.example.OptionUpdater;
+import org.example.handlers.ProcedureTransfer;
 import org.example.panels.PanelOptionToAdd;
 
 import javax.swing.*;
@@ -16,11 +18,13 @@ public class FrameSettings extends JFrame implements ActionListener {
     private int windowHeight, panelBodyHeight;
     private JPanel panelBody;
     private OptionUpdater optionUpdater;
+    private ProcedureTransfer procedureTransfer;
 
     public FrameSettings(OptionUpdater optionUpdater){
         this.optionUpdater = optionUpdater;
         optionsToAdd = new ArrayList<>();
         JPanel panelLabels = new JPanel();
+        procedureTransfer = new ProcedureTransfer();
         panelLabels.setPreferredSize(new Dimension(650,40));
 
         labelEmpty = new JLabel("");
@@ -97,13 +101,20 @@ public class FrameSettings extends JFrame implements ActionListener {
                     option.getButton().setVisible(true);
             }
             if(e.getSource() == option.getButton()){
-                new FrameCreateProcedure(option.getId());
+                new FrameCreateProcedure(option.getId(),procedureTransfer);
+                //Code for combining procedure with option.
             }
-            System.out.println("Im in!");
         }
         if(e.getSource() == buttonSave){
             optionUpdater.setOptionsToAdd(optionsToAdd);
+//            try {
+//                new OptionJSONFormatter().saveAddedOptionsToJSONArray(optionsToAdd);
+//            } catch (Exception ex) {
+//                throw new RuntimeException(ex);
+//            }
             System.out.println("Data saved, Size = "+optionsToAdd.size());
+            System.out.println("Procedure id: "+procedureTransfer.getId());
+            System.out.println("Procedure text: "+procedureTransfer.getProcedure());
 
         }
     }

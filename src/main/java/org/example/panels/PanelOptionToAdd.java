@@ -81,4 +81,16 @@ public class PanelOptionToAdd {
     public void setPanel(JPanel panel) {
         this.panel = panel;
     }
+
+    @Override
+    public String toString() {
+        return "PanelOptionToAdd [ " +
+                "id:" + id +
+                ", checkBox:" + checkBox +
+                ", textField:" + textField +
+                ", comboBox:" + comboBox +
+                ", button:" + button +
+                ", panel:" + panel +
+                " ]";
+    }
 }
