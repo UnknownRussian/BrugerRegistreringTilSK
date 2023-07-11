@@ -10,6 +10,26 @@ public class OptionToAdd {
     JButton button;
     JPanel panel;
 
+    public void setCheckBox(JCheckBox checkBox) {
+        this.checkBox = checkBox;
+    }
+
+    public void setTextField(JTextField textField) {
+        this.textField = textField;
+    }
+
+    public void setComboBox(JComboBox comboBox) {
+        this.comboBox = comboBox;
+    }
+
+    public void setButton(JButton button) {
+        this.button = button;
+    }
+
+    public void setPanel(JPanel panel) {
+        this.panel = panel;
+    }
+
     public JCheckBox getCheckBox() {
         return checkBox;
     }
@@ -50,5 +70,16 @@ public class OptionToAdd {
         panel.add(textField);
         panel.add(comboBox);
         panel.add(button);
+    }
+
+    @Override
+    public String toString() {
+        return "OptionToAdd{" +
+                "checkBox=" + checkBox +
+                ", textField=" + textField +
+                ", comboBox=" + comboBox +
+                ", button=" + button +
+                ", panel=" + panel +
+                '}';
     }
 }

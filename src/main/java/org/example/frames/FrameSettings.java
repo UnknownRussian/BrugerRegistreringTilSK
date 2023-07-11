@@ -1,12 +1,18 @@
 package org.example.frames;
 
+import org.example.OptionJSONFormatter;
 import org.example.OptionUpdater;
 import org.example.objects.OptionToAdd;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.*;
 import java.util.ArrayList;
 
 public class FrameSettings extends JFrame implements ActionListener {
@@ -91,7 +97,6 @@ public class FrameSettings extends JFrame implements ActionListener {
         }
         for(OptionToAdd option : optionsToAdd){
             if(e.getSource() == option.getComboBox()){
-                System.out.println("ComboBox changed number: "+optionsToAdd.indexOf(option));
                 if(option.getButton().isVisible())
                     option.getButton().setVisible(false);
                 else
@@ -101,6 +106,7 @@ public class FrameSettings extends JFrame implements ActionListener {
         if(e.getSource() == buttonSave){
             optionUpdater.setOptionsToAdd(optionsToAdd);
             System.out.println("Data saved, Size = "+optionsToAdd.size());
+
         }
     }
 
@@ -117,4 +123,7 @@ public class FrameSettings extends JFrame implements ActionListener {
         panelBody.setPreferredSize(new Dimension(650,panelBodyHeight));
         SwingUtilities.updateComponentTreeUI(this);
     }
+
+
+
 }

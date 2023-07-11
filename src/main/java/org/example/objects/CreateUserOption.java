@@ -48,6 +48,62 @@ public class CreateUserOption {
         optionPanel.add(rightPanel);
     }
 
+    public JLabel getLabel() {
+        return label;
+    }
+
+    public void setLabel(JLabel label) {
+        this.label = label;
+    }
+
+    public JRadioButton getYesInput() {
+        return yesInput;
+    }
+
+    public void setYesInput(JRadioButton yesInput) {
+        this.yesInput = yesInput;
+    }
+
+    public JRadioButton getNoInput() {
+        return noInput;
+    }
+
+    public void setNoInput(JRadioButton noInput) {
+        this.noInput = noInput;
+    }
+
+    public JTextField getTxtInput() {
+        return txtInput;
+    }
+
+    public void setTxtInput(JTextField txtInput) {
+        this.txtInput = txtInput;
+    }
+
+    public JPanel getLeftPanel() {
+        return leftPanel;
+    }
+
+    public void setLeftPanel(JPanel leftPanel) {
+        this.leftPanel = leftPanel;
+    }
+
+    public JPanel getRightPanel() {
+        return rightPanel;
+    }
+
+    public void setRightPanel(JPanel rightPanel) {
+        this.rightPanel = rightPanel;
+    }
+
+    public void setOptionPanel(JPanel optionPanel) {
+        this.optionPanel = optionPanel;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
     public JPanel getOptionPanel() {
         return optionPanel;
     }

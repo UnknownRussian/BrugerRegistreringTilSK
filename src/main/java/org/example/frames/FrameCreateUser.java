@@ -43,7 +43,7 @@ public class FrameCreateUser extends JFrame {
     private void createOptions(){
         options = new ArrayList<>();
         for(OptionToAdd optionToAdd : optionUpdater.getOptionsToAdd()){
-            options.add(new CreateUserOption((optionToAdd.getComboBox().getSelectedIndex() == 1),optionToAdd.getTextField().getText()));
+            options.add(new CreateUserOption((optionToAdd.getComboBox().getSelectedIndex() == 0),optionToAdd.getTextField().getText()));
         }
 
 
