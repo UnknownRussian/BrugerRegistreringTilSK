@@ -1,7 +1,7 @@
 package org.example.frames;
 
 import org.example.OptionUpdater;
-import org.example.objects.OptionToAdd;
+import org.example.panels.PanelOptionToAdd;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class FrameSettings extends JFrame implements ActionListener {
     private JLabel labelEmpty ,labelName, labelInputType, labelProcedure;
     private JButton buttonAdd, buttonSave, buttonRemove, buttonCancel;
-    private ArrayList<OptionToAdd> optionsToAdd;
+    private ArrayList<PanelOptionToAdd> optionsToAdd;
     private int windowHeight, panelBodyHeight;
     private JPanel panelBody;
     private OptionUpdater optionUpdater;
@@ -89,7 +89,7 @@ public class FrameSettings extends JFrame implements ActionListener {
         if(e.getSource() == buttonAdd){
             addOption();
         }
-        for(OptionToAdd option : optionsToAdd){
+        for(PanelOptionToAdd option : optionsToAdd){
             if(e.getSource() == option.getComboBox()){
                 if(option.getButton().isVisible())
                     option.getButton().setVisible(false);
@@ -105,13 +105,13 @@ public class FrameSettings extends JFrame implements ActionListener {
     }
 
     private void addOption(){
-        OptionToAdd option = new OptionToAdd();
+        PanelOptionToAdd option = new PanelOptionToAdd();
         option.getComboBox().addActionListener(this);
         optionsToAdd.add(option);
         panelBody.removeAll();
         System.out.println(optionsToAdd.size());
-        for(OptionToAdd optionToAdd : optionsToAdd){
-            panelBody.add(optionToAdd.getPanel());
+        for(PanelOptionToAdd panelOptionToAdd : optionsToAdd){
+            panelBody.add(panelOptionToAdd.getPanel());
         }
         panelBodyHeight = 40 * optionsToAdd.size();
         panelBody.setPreferredSize(new Dimension(650,panelBodyHeight));

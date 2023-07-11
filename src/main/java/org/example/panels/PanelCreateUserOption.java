@@ -1,16 +1,16 @@
-package org.example.objects;
+package org.example.panels;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class CreateUserOption {
+public class PanelCreateUserOption {
     private JLabel label;
     private JRadioButton yesInput, noInput;
     private JTextField txtInput;
     private JPanel  leftPanel, rightPanel, optionPanel;
     private int height;
 
-    public CreateUserOption(boolean isText, String labelText){
+    public PanelCreateUserOption(boolean isText, String labelText){
         label = new JLabel(labelText);
         optionPanel = new JPanel();
         leftPanel = new JPanel();

@@ -2,8 +2,8 @@ package org.example.frames;
 
 import org.example.OptionUpdater;
 import org.example.objects.Account;
-import org.example.objects.CreateUserOption;
-import org.example.objects.OptionToAdd;
+import org.example.panels.PanelCreateUserOption;
+import org.example.panels.PanelOptionToAdd;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class FrameCreateUser extends JFrame {
     private JButton buttonStart, buttonSave, buttonCancel;
     private Account account;
-    private ArrayList<CreateUserOption> options;
+    private ArrayList<PanelCreateUserOption> options;
     private OptionUpdater optionUpdater;
 
     public FrameCreateUser(OptionUpdater optionUpdater){
@@ -23,7 +23,7 @@ public class FrameCreateUser extends JFrame {
         System.out.println((options.get(0).getHeight()+ " " +options.size()));
         setSize(new Dimension(650,(options.get(0).getHeight()*(options.size()+4))));
 
-        for(CreateUserOption option : options){
+        for(PanelCreateUserOption option : options){
             add(option.getOptionPanel());
         }
 
@@ -42,8 +42,8 @@ public class FrameCreateUser extends JFrame {
 
     private void createOptions(){
         options = new ArrayList<>();
-        for(OptionToAdd optionToAdd : optionUpdater.getOptionsToAdd()){
-            options.add(new CreateUserOption((optionToAdd.getComboBox().getSelectedIndex() == 0),optionToAdd.getTextField().getText()));
+        for(PanelOptionToAdd panelOptionToAdd : optionUpdater.getOptionsToAdd()){
+            options.add(new PanelCreateUserOption((panelOptionToAdd.getComboBox().getSelectedIndex() == 0), panelOptionToAdd.getTextField().getText()));
         }
 
 

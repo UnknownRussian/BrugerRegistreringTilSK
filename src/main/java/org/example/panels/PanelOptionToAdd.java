@@ -1,18 +1,16 @@
-package org.example.objects;
+package org.example.panels;
 
-import javax.annotation.processing.Generated;
 import javax.swing.*;
 import java.awt.*;
-import java.io.Serial;
 
-public class OptionToAdd {
+public class PanelOptionToAdd {
     private JCheckBox checkBox;
     private JTextField textField;
     private JComboBox comboBox;
     private JButton button;
     private JPanel panel;
 
-    public OptionToAdd(){
+    public PanelOptionToAdd(){
         checkBox = new JCheckBox();
         textField = new JTextField();
         textField.setPreferredSize(new Dimension(300,30));

@@ -1,7 +1,7 @@
 package org.example;
 
-import org.example.objects.CreateUserOption;
-import org.example.objects.OptionToAdd;
+import org.example.panels.PanelCreateUserOption;
+import org.example.panels.PanelOptionToAdd;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -12,8 +12,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class OptionJSONFormatter {
-    private ArrayList<OptionToAdd> optionsToAdd;
-    private ArrayList<CreateUserOption> userOptions;
+    private ArrayList<PanelOptionToAdd> optionsToAdd;
+    private ArrayList<PanelCreateUserOption> userOptions;
     private JSONArray optionsToAddJSONArray;
     private JSONArray userOptionsJSONArray;
 
@@ -23,9 +23,9 @@ public class OptionJSONFormatter {
         userOptionsJSONArray = new JSONArray();
     }
 
-    public void saveAddedOptionsToJSONArray(ArrayList<OptionToAdd> optionsToAdd) throws Exception {
+    public void saveAddedOptionsToJSONArray(ArrayList<PanelOptionToAdd> optionsToAdd) throws Exception {
         optionsToAddJSONArray = new JSONArray();
-        for(OptionToAdd option : optionsToAdd){
+        for(PanelOptionToAdd option : optionsToAdd){
             JSONObject addedOption = new JSONObject();
             addedOption.put("checkBox", "{"+option.getCheckBox()+"}");
             addedOption.put("textField", "{"+option.getTextField()+"}");
@@ -40,7 +40,7 @@ public class OptionJSONFormatter {
 
     public void saveCreateUserOptionsToJSONArray() throws Exception {
         userOptionsJSONArray = new JSONArray();
-        for(CreateUserOption option : userOptions){
+        for(PanelCreateUserOption option : userOptions){
             JSONObject createdOption = new JSONObject();
             createdOption.put("label", option.getLabel());
             createdOption.put("yesInput", option.getYesInput());

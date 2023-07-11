@@ -1,13 +1,11 @@
 package org.example.frames;
 
 import org.example.OptionUpdater;
-import org.example.objects.OptionToAdd;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 public class FrameMenu extends JFrame implements ActionListener {
     private JButton buttonCreateUser, buttonShowStartedProgress, buttonShowEndedProgress, buttonSettings, buttonExit;
