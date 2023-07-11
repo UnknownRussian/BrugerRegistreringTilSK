@@ -4,13 +4,15 @@ import javax.swing.*;
 import java.awt.*;
 
 public class PanelOptionToAdd {
+    private long id;
     private JCheckBox checkBox;
     private JTextField textField;
     private JComboBox comboBox;
     private JButton button;
     private JPanel panel;
 
-    public PanelOptionToAdd(){
+    public PanelOptionToAdd(long id){
+        this.id = id;
         checkBox = new JCheckBox();
         textField = new JTextField();
         textField.setPreferredSize(new Dimension(300,30));
@@ -30,6 +32,14 @@ public class PanelOptionToAdd {
         panel.add(textField);
         panel.add(comboBox);
         panel.add(button);
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public JCheckBox getCheckBox() {

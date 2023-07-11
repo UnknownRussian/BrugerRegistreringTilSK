@@ -96,6 +96,10 @@ public class FrameSettings extends JFrame implements ActionListener {
                 else
                     option.getButton().setVisible(true);
             }
+            if(e.getSource() == option.getButton()){
+                new FrameCreateProcedure(option.getId());
+            }
+            System.out.println("Im in!");
         }
         if(e.getSource() == buttonSave){
             optionUpdater.setOptionsToAdd(optionsToAdd);
@@ -105,7 +109,8 @@ public class FrameSettings extends JFrame implements ActionListener {
     }
 
     private void addOption(){
-        PanelOptionToAdd option = new PanelOptionToAdd();
+        PanelOptionToAdd option = new PanelOptionToAdd(System.currentTimeMillis());
+        option.getButton().addActionListener(this);
         option.getComboBox().addActionListener(this);
         optionsToAdd.add(option);
         panelBody.removeAll();
