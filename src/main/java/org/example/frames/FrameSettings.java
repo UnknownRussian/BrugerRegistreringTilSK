@@ -1,18 +1,12 @@
 package org.example.frames;
 
-import org.example.OptionJSONFormatter;
 import org.example.OptionUpdater;
 import org.example.objects.OptionToAdd;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.*;
 import java.util.ArrayList;
 
 public class FrameSettings extends JFrame implements ActionListener {
@@ -93,7 +87,7 @@ public class FrameSettings extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == buttonAdd){
-            refreshBodyPanel();
+            addOption();
         }
         for(OptionToAdd option : optionsToAdd){
             if(e.getSource() == option.getComboBox()){
@@ -110,7 +104,7 @@ public class FrameSettings extends JFrame implements ActionListener {
         }
     }
 
-    private void refreshBodyPanel(){
+    private void addOption(){
         OptionToAdd option = new OptionToAdd();
         option.getComboBox().addActionListener(this);
         optionsToAdd.add(option);
@@ -121,9 +115,6 @@ public class FrameSettings extends JFrame implements ActionListener {
         }
         panelBodyHeight = 40 * optionsToAdd.size();
         panelBody.setPreferredSize(new Dimension(650,panelBodyHeight));
-        SwingUtilities.updateComponentTreeUI(this);
+        SwingUtilities.updateComponentTreeUI(this);// Use this if components don't show up in a panel
     }
-
-
-
 }

@@ -1,54 +1,16 @@
 package org.example.objects;
 
+import javax.annotation.processing.Generated;
 import javax.swing.*;
 import java.awt.*;
+import java.io.Serial;
 
 public class OptionToAdd {
-    JCheckBox checkBox;
-    JTextField textField;
-    JComboBox comboBox;
-    JButton button;
-    JPanel panel;
-
-    public void setCheckBox(JCheckBox checkBox) {
-        this.checkBox = checkBox;
-    }
-
-    public void setTextField(JTextField textField) {
-        this.textField = textField;
-    }
-
-    public void setComboBox(JComboBox comboBox) {
-        this.comboBox = comboBox;
-    }
-
-    public void setButton(JButton button) {
-        this.button = button;
-    }
-
-    public void setPanel(JPanel panel) {
-        this.panel = panel;
-    }
-
-    public JCheckBox getCheckBox() {
-        return checkBox;
-    }
-
-    public JTextField getTextField() {
-        return textField;
-    }
-
-    public JComboBox getComboBox() {
-        return comboBox;
-    }
-
-    public JButton getButton() {
-        return button;
-    }
-
-    public JPanel getPanel() {
-        return panel;
-    }
+    private JCheckBox checkBox;
+    private JTextField textField;
+    private JComboBox comboBox;
+    private JButton button;
+    private JPanel panel;
 
     public OptionToAdd(){
         checkBox = new JCheckBox();
@@ -72,14 +34,43 @@ public class OptionToAdd {
         panel.add(button);
     }
 
-    @Override
-    public String toString() {
-        return "OptionToAdd{" +
-                "checkBox=" + checkBox +
-                ", textField=" + textField +
-                ", comboBox=" + comboBox +
-                ", button=" + button +
-                ", panel=" + panel +
-                '}';
+    public JCheckBox getCheckBox() {
+        return checkBox;
+    }
+
+    public void setCheckBox(JCheckBox checkBox) {
+        this.checkBox = checkBox;
+    }
+
+    public JTextField getTextField() {
+        return textField;
+    }
+
+    public void setTextField(JTextField textField) {
+        this.textField = textField;
+    }
+
+    public JComboBox getComboBox() {
+        return comboBox;
+    }
+
+    public void setComboBox(JComboBox comboBox) {
+        this.comboBox = comboBox;
+    }
+
+    public JButton getButton() {
+        return button;
+    }
+
+    public void setButton(JButton button) {
+        this.button = button;
+    }
+
+    public JPanel getPanel() {
+        return panel;
+    }
+
+    public void setPanel(JPanel panel) {
+        this.panel = panel;
     }
 }
