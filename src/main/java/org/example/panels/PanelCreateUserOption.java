@@ -9,12 +9,14 @@ public class PanelCreateUserOption {
     private JTextField txtInput;
     private JPanel  leftPanel, rightPanel, optionPanel;
     private int height;
+    private boolean isText;
 
     public PanelCreateUserOption(boolean isText, String labelText){
         label = new JLabel(labelText);
         optionPanel = new JPanel();
         leftPanel = new JPanel();
         rightPanel = new JPanel();
+        this.isText = isText;
 
         height = 40;
 
@@ -110,5 +112,9 @@ public class PanelCreateUserOption {
 
     public int getHeight() {
         return height;
+    }
+
+    public boolean getIsText(){
+        return isText;
     }
 }

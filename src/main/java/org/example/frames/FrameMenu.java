@@ -1,6 +1,6 @@
 package org.example.frames;
 
-import org.example.OptionUpdater;
+import org.example.handlers.OptionUpdater;
 
 import javax.swing.*;
 import java.awt.*;

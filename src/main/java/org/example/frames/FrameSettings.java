@@ -1,7 +1,6 @@
 package org.example.frames;
 
-import org.example.OptionJSONFormatter;
-import org.example.OptionUpdater;
+import org.example.handlers.OptionUpdater;
 import org.example.handlers.ProcedureTransfer;
 import org.example.panels.PanelOptionToAdd;
 
@@ -15,16 +14,16 @@ public class FrameSettings extends JFrame implements ActionListener {
     private JLabel labelEmpty ,labelName, labelInputType, labelProcedure;
     private JButton buttonAdd, buttonSave, buttonRemove, buttonCancel;
     private ArrayList<PanelOptionToAdd> optionsToAdd;
+    private ArrayList<ProcedureTransfer> procedures;
     private int windowHeight, panelBodyHeight;
     private JPanel panelBody;
     private OptionUpdater optionUpdater;
-    private ProcedureTransfer procedureTransfer;
 
     public FrameSettings(OptionUpdater optionUpdater){
         this.optionUpdater = optionUpdater;
         optionsToAdd = new ArrayList<>();
+        procedures = new ArrayList<>();
         JPanel panelLabels = new JPanel();
-        procedureTransfer = new ProcedureTransfer();
         panelLabels.setPreferredSize(new Dimension(650,40));
 
         labelEmpty = new JLabel("");
@@ -95,27 +94,29 @@ public class FrameSettings extends JFrame implements ActionListener {
         }
         for(PanelOptionToAdd option : optionsToAdd){
             if(e.getSource() == option.getComboBox()){
-                if(option.getButton().isVisible())
-                    option.getButton().setVisible(false);
-                else
+                if(option.getComboBox().getSelectedIndex() == 1)
                     option.getButton().setVisible(true);
+                else
+                    option.getButton().setVisible(false);
             }
             if(e.getSource() == option.getButton()){
-                new FrameCreateProcedure(option.getId(),procedureTransfer);
+                ProcedureTransfer procedure = new ProcedureTransfer();
+                procedures.add(procedure);
+                new FrameCreateProcedure(option.getId(),procedure);
                 //Code for combining procedure with option.
             }
         }
         if(e.getSource() == buttonSave){
             optionUpdater.setOptionsToAdd(optionsToAdd);
+            optionUpdater.setProcedures(procedures);
 //            try {
 //                new OptionJSONFormatter().saveAddedOptionsToJSONArray(optionsToAdd);
 //            } catch (Exception ex) {
 //                throw new RuntimeException(ex);
 //            }
-            System.out.println("Data saved, Size = "+optionsToAdd.size());
-            System.out.println("Procedure id: "+procedureTransfer.getId());
-            System.out.println("Procedure text: "+procedureTransfer.getProcedure());
-
+//            System.out.println("Data saved, Size = "+optionsToAdd.size());
+//            System.out.println("Procedure id: "+procedures.get(0).getId());
+//            System.out.println("Procedure text: "+procedures.get(0).getProcedure());
         }
     }
 
