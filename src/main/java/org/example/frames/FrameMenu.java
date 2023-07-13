@@ -1,6 +1,6 @@
 package org.example.frames;
 
-import org.example.handlers.OptionUpdater;
+import org.example.handlers.HandlerData;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,10 +9,10 @@ import java.awt.event.ActionListener;
 
 public class FrameMenu extends JFrame implements ActionListener {
     private JButton buttonCreateUser, buttonShowStartedProgress, buttonShowEndedProgress, buttonSettings, buttonExit;
-    private OptionUpdater optionUpdater;
+    private HandlerData handlerData;
 
     public FrameMenu(){
-        optionUpdater = new OptionUpdater();
+        handlerData = new HandlerData();
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -40,10 +40,10 @@ public class FrameMenu extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == buttonCreateUser){
-            if(optionUpdater.getOptionsToAdd().size() == 0){
+            if(handlerData.getOptionsToAdd().size() == 0){
                 JOptionPane.showMessageDialog(null,"Lav venligst en liste i indstillinger!","Advarsel!",JOptionPane.ERROR_MESSAGE);
             }else{
-                new FrameCreateUser(optionUpdater);
+                new FrameCreateUser(handlerData);
             }
         }
         if(e.getSource() == buttonExit){
@@ -52,7 +52,7 @@ public class FrameMenu extends JFrame implements ActionListener {
                 System.exit(0);
         }
         if(e.getSource() == buttonSettings){
-            new FrameSettings(optionUpdater);
+            new FrameSettings(handlerData);
         }
     }
 }

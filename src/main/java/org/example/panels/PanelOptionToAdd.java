@@ -4,12 +4,15 @@ import javax.swing.*;
 import java.awt.*;
 
 public class PanelOptionToAdd {
-    private long id;
-    private JCheckBox checkBox;
-    private JTextField textField;
-    private JComboBox comboBox;
-    private JButton button;
-    private JPanel panel;
+    //Fields that needs to be saved:
+    private long id; //Used to combine a procedure (if created), to the option.
+    private JTextField textField; //Used to give names for the Labels created with PanelCreateUserOptions
+    private JComboBox comboBox; //Used for selecting if an option, created in PanelCreateUserOption, needs to be with a text box or yes/no radio buttons, also if yes/no is selected a button to add a procedure becomes visible
+
+    //Fields that doesn't need to be saved:
+    private JCheckBox checkBox; //Used to mark an option in setting (if you want to remove an option)
+    private JButton button; //This is used to add a procedure, if needed. If procedure is not added, button created in PanelCreateUser will be disabled.
+    private JPanel panel; //Adds every component needed to create an option in FrameSettings
 
     public PanelOptionToAdd(long id){
         this.id = id;

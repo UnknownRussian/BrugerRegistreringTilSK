@@ -1,8 +1,7 @@
 package org.example.panels;
 
-import org.example.handlers.OptionUpdater;
+import org.example.handlers.HandlerData;
 import org.example.listeners.CreateUserListener;
-import org.example.objects.Account;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,17 +9,16 @@ import java.util.ArrayList;
 
 public class PanelCreateUser extends JPanel {
     private JButton buttonStart, buttonSave, buttonCancel;
-    private OptionUpdater optionUpdater;
+    private HandlerData handlerData;
     private ArrayList<PanelCreateUserOption> options;
     private CreateUserListener listener;
     private Dimension dimension;
 
-    public PanelCreateUser(OptionUpdater optionUpdater, ArrayList<PanelCreateUserOption> options, Dimension dimension){
-        this.optionUpdater = optionUpdater;
+    public PanelCreateUser(HandlerData handlerData, ArrayList<PanelCreateUserOption> options, Dimension dimension){
+        this.handlerData = handlerData;
         this.options = options;
 
         setLayout(new FlowLayout(FlowLayout.CENTER));
-        System.out.println((options.get(0).getHeight()+ " " +options.size()));
         setPreferredSize(dimension);
 
         for(PanelCreateUserOption option : options){

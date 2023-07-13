@@ -17,11 +17,13 @@ public class CreateUserListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println("Im in");
         if(e.getSource() == panelCreateUser.getButtonStart()){
             panelCreateUser.setVisible(false);
             panelCheckList.setOptions(panelCreateUser.getOptions());
             panelCheckList.setVisible(true);
+        }
+        if(e.getSource() == panelCheckList.getButtonStartProcedure()){
+
         }
     }
 

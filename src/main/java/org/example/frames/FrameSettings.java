@@ -1,7 +1,7 @@
 package org.example.frames;
 
-import org.example.handlers.OptionUpdater;
-import org.example.handlers.ProcedureTransfer;
+import org.example.handlers.HandlerData;
+import org.example.objects.Procedure;
 import org.example.panels.PanelOptionToAdd;
 
 import javax.swing.*;
@@ -14,13 +14,13 @@ public class FrameSettings extends JFrame implements ActionListener {
     private JLabel labelEmpty ,labelName, labelInputType, labelProcedure;
     private JButton buttonAdd, buttonSave, buttonRemove, buttonCancel;
     private ArrayList<PanelOptionToAdd> optionsToAdd;
-    private ArrayList<ProcedureTransfer> procedures;
+    private ArrayList<Procedure> procedures;
     private int windowHeight, panelBodyHeight;
     private JPanel panelBody;
-    private OptionUpdater optionUpdater;
+    private HandlerData handlerData;
 
-    public FrameSettings(OptionUpdater optionUpdater){
-        this.optionUpdater = optionUpdater;
+    public FrameSettings(HandlerData handlerData){
+        this.handlerData = handlerData;
         optionsToAdd = new ArrayList<>();
         procedures = new ArrayList<>();
         JPanel panelLabels = new JPanel();
@@ -100,23 +100,15 @@ public class FrameSettings extends JFrame implements ActionListener {
                     option.getButton().setVisible(false);
             }
             if(e.getSource() == option.getButton()){
-                ProcedureTransfer procedure = new ProcedureTransfer();
+                Procedure procedure = new Procedure();
                 procedures.add(procedure);
                 new FrameCreateProcedure(option.getId(),procedure);
                 //Code for combining procedure with option.
             }
         }
         if(e.getSource() == buttonSave){
-            optionUpdater.setOptionsToAdd(optionsToAdd);
-            optionUpdater.setProcedures(procedures);
-//            try {
-//                new OptionJSONFormatter().saveAddedOptionsToJSONArray(optionsToAdd);
-//            } catch (Exception ex) {
-//                throw new RuntimeException(ex);
-//            }
-//            System.out.println("Data saved, Size = "+optionsToAdd.size());
-//            System.out.println("Procedure id: "+procedures.get(0).getId());
-//            System.out.println("Procedure text: "+procedures.get(0).getProcedure());
+            handlerData.setOptionsToAdd(optionsToAdd);
+            handlerData.setProcedures(procedures);
         }
     }
 
@@ -126,7 +118,6 @@ public class FrameSettings extends JFrame implements ActionListener {
         option.getComboBox().addActionListener(this);
         optionsToAdd.add(option);
         panelBody.removeAll();
-        System.out.println(optionsToAdd.size());
         for(PanelOptionToAdd panelOptionToAdd : optionsToAdd){
             panelBody.add(panelOptionToAdd.getPanel());
         }

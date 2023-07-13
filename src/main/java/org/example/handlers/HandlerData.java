@@ -1,16 +1,17 @@
 package org.example.handlers;
 
+import org.example.objects.Procedure;
 import org.example.panels.PanelCreateUserOption;
 import org.example.panels.PanelOptionToAdd;
 
 import java.util.ArrayList;
 
-public class OptionUpdater {
+public class HandlerData {
     private ArrayList<PanelOptionToAdd> optionsToAdd;
     private ArrayList<PanelCreateUserOption> panelCreateUserOptions;
-    private ArrayList<ProcedureTransfer> procedures;
+    private ArrayList<Procedure> procedures;
 
-    public OptionUpdater() {
+    public HandlerData() {
         optionsToAdd = new ArrayList<>();
         panelCreateUserOptions = new ArrayList<>();
         procedures = new ArrayList<>();
@@ -36,11 +37,11 @@ public class OptionUpdater {
         this.panelCreateUserOptions = panelCreateUserOptions;
     }
 
-    public ArrayList<ProcedureTransfer> getProcedures() {
+    public ArrayList<Procedure> getProcedures() {
         return procedures;
     }
 
-    public void setProcedures(ArrayList<ProcedureTransfer> procedures) {
+    public void setProcedures(ArrayList<Procedure> procedures) {
         this.procedures = procedures;
     }
 }

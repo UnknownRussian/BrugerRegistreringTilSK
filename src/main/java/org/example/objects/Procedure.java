@@ -1,10 +1,10 @@
-package org.example.handlers;
+package org.example.objects;
 
-public class ProcedureTransfer {
+public class Procedure {
     private String procedure;
     private long id;
 
-    public ProcedureTransfer() {
+    public Procedure() {
         procedure = "";
         id = 0;
     }
