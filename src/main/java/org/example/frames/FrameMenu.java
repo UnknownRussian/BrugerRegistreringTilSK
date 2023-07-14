@@ -1,18 +1,26 @@
 package org.example.frames;
 
 import org.example.handlers.HandlerData;
+import org.json.simple.parser.ParseException;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class FrameMenu extends JFrame implements ActionListener {
     private JButton buttonCreateUser, buttonShowStartedProgress, buttonShowEndedProgress, buttonSettings, buttonExit;
     private HandlerData handlerData;
 
     public FrameMenu(){
-        handlerData = new HandlerData();
+        try{
+            handlerData = new HandlerData();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

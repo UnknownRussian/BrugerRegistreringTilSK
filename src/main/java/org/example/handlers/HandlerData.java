@@ -6,7 +6,11 @@ import org.example.panels.PanelCreateUserOption;
 import org.example.panels.PanelOptionToAdd;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
+import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,16 +22,17 @@ public class HandlerData {
     private ArrayList<OptionAndProcedure> optionsAndProcedures;
     private JSONArray optionsAndProceduresJSONArray;
 
-    public HandlerData() {
+    public ArrayList<OptionAndProcedure> getOptionsAndProcedures() {
+        return optionsAndProcedures;
+    }
+
+    public HandlerData() throws IOException, ParseException {
         optionsToAdd = new ArrayList<>();
         panelCreateUserOptions = new ArrayList<>();
         procedures = new ArrayList<>();
         optionsAndProcedures = new ArrayList<>();
         optionsAndProceduresJSONArray = new JSONArray();
-    }
-
-    public ArrayList<PanelOptionToAdd> getOptionsToAdd() {
-        return optionsToAdd;
+        readFiles();
     }
 
     public void setOptionsToAdd(ArrayList<PanelOptionToAdd> optionsToAdd) {
@@ -88,6 +93,28 @@ public class HandlerData {
         file.flush();
     }
 
+    private void readFiles() throws IOException, ParseException {
+        File file1 = new File("optionsAndProcedures.json");
+        if(file1.exists()){
+            optionsAndProcedures = new ArrayList<>();
+            FileReader optionsAndProceduresFile = new FileReader("optionsAndProcedures.json");
+            JSONParser parser = new JSONParser();
+            Object obj = parser.parse(optionsAndProceduresFile);
+            JSONArray jsonArray = (JSONArray) obj;
+            jsonArray.forEach(optionAndProcedure -> {
+                JSONObject jsonObject = (JSONObject) optionAndProcedure;
+                optionsAndProcedures.add(new OptionAndProcedure(
+                        (long)jsonObject.get("optionId"),
+                        (long)jsonObject.get("procedureId"),
+                        (String)jsonObject.get("optionTextFieldText"),
+                        (String)jsonObject.get("procedureText"),
+                        (boolean)jsonObject.get("isText")
+                ));
+            });
+            System.out.println(optionsAndProcedures.size());
+        }
+    }
+
     public ArrayList<PanelCreateUserOption> getCreateUserOptions() {
         return panelCreateUserOptions;
     }
@@ -102,5 +129,9 @@ public class HandlerData {
 
     public void setProcedures(ArrayList<Procedure> procedures) {
         this.procedures = procedures;
+    }
+
+    public ArrayList<PanelOptionToAdd> getOptionsToAdd() {
+        return optionsToAdd;
     }
 }
