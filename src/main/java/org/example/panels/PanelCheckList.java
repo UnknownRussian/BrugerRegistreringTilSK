@@ -7,11 +7,11 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class PanelCheckList extends JPanel {
-    private ArrayList<PanelCreateUserOption> options;
+    private ArrayList<PanelCreateUserOption> options; // Stores all options that are created from PanelCreateUser. This is given from PanelCreateUser, via setOptions() method.
+    private JCheckBox checkBox; // Used to mark if checkPoint is complete
+    private JLabel label; // Used to explain short what to do in a checkPoint
 
-    private JButton buttonEnd, buttonSave, buttonRemove, buttonCancel, buttonStartProcedure;
-    private JCheckBox checkBox;
-    private JLabel label;
+    private JButton buttonEnd, buttonSave, buttonRemove, buttonCancel, buttonStartProcedure; // Do I need to explain? xD
     private CreateUserListener listener;
 
     public PanelCheckList (Dimension dimension){

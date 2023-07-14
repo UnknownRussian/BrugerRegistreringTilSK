@@ -4,12 +4,16 @@ import javax.swing.*;
 import java.awt.*;
 
 public class PanelCreateUserOption {
-    private JLabel label;
-    private JRadioButton yesInput, noInput;
-    private JTextField txtInput;
-    private JPanel  leftPanel, rightPanel, optionPanel;
-    private int height;
-    private boolean isText;
+
+    //Fields that needs to be saved locally
+    private JLabel label; //Label is created with the text given from PanelOptionToAdd textField
+    private JRadioButton yesInput, noInput; //Radio buttons will only be created if chosen from PanelOptionToAdd comboBox, in settings
+    private JTextField txtInput; //txtInput will only be created if chosen from PanelOptionToAdd comboBox, in settings
+    private boolean isText; //This value is used to determine if the optionPanel should have a txtInput or yes/no radioButtons
+
+    //Fields that is not supposed to be saved locally
+    private JPanel  leftPanel, rightPanel, optionPanel; //Panels are used to create a better GUI, and to separate components. The optionPanel is used to put all the components in and create 1 or more options
+    private int height; //This is used to store the height of the optionPanel, and to generate the right height for a frame/window
 
     public PanelCreateUserOption(boolean isText, String labelText){
         label = new JLabel(labelText);

@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class FrameSettings extends JFrame implements ActionListener {
@@ -109,6 +110,11 @@ public class FrameSettings extends JFrame implements ActionListener {
         if(e.getSource() == buttonSave){
             handlerData.setOptionsToAdd(optionsToAdd);
             handlerData.setProcedures(procedures);
+            try {
+                handlerData.saveOptionsAndProcedures();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
         }
     }
 
