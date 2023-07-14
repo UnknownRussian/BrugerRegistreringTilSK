@@ -22,8 +22,14 @@ public class FrameSettings extends JFrame implements ActionListener {
 
     public FrameSettings(HandlerData handlerData){
         this.handlerData = handlerData;
-        optionsToAdd = new ArrayList<>();
-        procedures = new ArrayList<>();
+        //Handler needs to transfer data to optionsToAdd and procedures
+        if(handlerData.getOptionsToAdd().size() == 0){
+            optionsToAdd = new ArrayList<>();
+            procedures = new ArrayList<>();
+        }else {
+            optionsToAdd = handlerData.getOptionsToAdd();
+            procedures = new ArrayList<>();
+        }
         JPanel panelLabels = new JPanel();
         panelLabels.setPreferredSize(new Dimension(650,40));
 
@@ -86,12 +92,15 @@ public class FrameSettings extends JFrame implements ActionListener {
         setLayout(new FlowLayout(FlowLayout.CENTER));
         setSize(new Dimension(650,windowHeight));
         setVisible(true);
+
+        if(optionsToAdd.size() > 0)
+            addOption(false);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == buttonAdd){
-            addOption();
+            addOption(true);
         }
         for(PanelOptionToAdd option : optionsToAdd){
             if(e.getSource() == option.getComboBox()){
@@ -118,11 +127,13 @@ public class FrameSettings extends JFrame implements ActionListener {
         }
     }
 
-    private void addOption(){
-        PanelOptionToAdd option = new PanelOptionToAdd(System.currentTimeMillis());
-        option.getButton().addActionListener(this);
-        option.getComboBox().addActionListener(this);
-        optionsToAdd.add(option);
+    private void addOption(boolean addedViaButton){
+        if(addedViaButton) {
+            PanelOptionToAdd option = new PanelOptionToAdd(System.currentTimeMillis());
+            option.getButton().addActionListener(this);
+            option.getComboBox().addActionListener(this);
+            optionsToAdd.add(option);
+        }
         panelBody.removeAll();
         for(PanelOptionToAdd panelOptionToAdd : optionsToAdd){
             panelBody.add(panelOptionToAdd.getPanel());

@@ -112,7 +112,26 @@ public class HandlerData {
                 ));
             });
             System.out.println(optionsAndProcedures.size());
+            convertOptionsAndProceduresBack();
         }
+    }
+
+    private void convertOptionsAndProceduresBack(){
+        optionsAndProcedures.forEach(oap -> {
+            if(oap.isText()){
+                PanelOptionToAdd option = new PanelOptionToAdd(oap.getOptionId());
+                option.getTextField().setText(oap.getOptionTextFieldText());
+                option.getComboBox().setSelectedIndex(0);//0 is text
+                option.getButton().setVisible(false);
+                optionsToAdd.add(option);
+            }else{
+                PanelOptionToAdd option = new PanelOptionToAdd(oap.getOptionId());
+                option.getTextField().setText(oap.getOptionTextFieldText());
+                option.getComboBox().setSelectedIndex(1);//0 is text
+                option.getButton().setVisible(true);
+                optionsToAdd.add(option);
+            }
+        });
     }
 
     public ArrayList<PanelCreateUserOption> getCreateUserOptions() {
