@@ -117,13 +117,30 @@ public class FrameSettings extends JFrame implements ActionListener {
             }
         }
         if(e.getSource() == buttonSave){
-            handlerData.setOptionsToAdd(optionsToAdd);
-            handlerData.setProcedures(procedures);
-            try {
-                handlerData.saveOptionsAndProcedures();
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
+            saveOptions();
+        }
+        if(e.getSource() == buttonRemove){
+            ArrayList<PanelOptionToAdd> optionsToRemove = new ArrayList<>();
+            optionsToAdd.forEach(optionToAdd -> {
+                if(optionToAdd.getCheckBox().isSelected())
+                    optionsToRemove.add(optionToAdd);
+            });
+            optionsToRemove.forEach(optionToAdd -> {
+                optionsToAdd.remove(optionToAdd);
+                addOption(false);
+
+            });
+            SwingUtilities.updateComponentTreeUI(this);// Use this if components don't show up in a panel
+        }
+    }
+
+    private void saveOptions(){
+        handlerData.setOptionsToAdd(optionsToAdd);
+        handlerData.setProcedures(procedures);
+        try {
+            handlerData.saveOptionsAndProcedures();
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
         }
     }
 
