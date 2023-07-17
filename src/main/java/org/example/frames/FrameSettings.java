@@ -99,6 +99,7 @@ public class FrameSettings extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        System.out.println("Started here");
         if(e.getSource() == buttonAdd){
             addOption(true);
         }
@@ -110,8 +111,10 @@ public class FrameSettings extends JFrame implements ActionListener {
                     option.getButton().setVisible(false);
             }
             if(e.getSource() == option.getButton()){
+                System.out.println("Im here");
                 Procedure procedure = new Procedure();
                 procedures.add(procedure);
+                System.out.println(procedures.size());
                 new FrameCreateProcedure(option.getId(),procedure);
                 //Code for combining procedure with option.
             }
@@ -147,12 +150,12 @@ public class FrameSettings extends JFrame implements ActionListener {
     private void addOption(boolean addedViaButton){
         if(addedViaButton) {
             PanelOptionToAdd option = new PanelOptionToAdd(System.currentTimeMillis());
-            option.getButton().addActionListener(this);
-            option.getComboBox().addActionListener(this);
             optionsToAdd.add(option);
         }
         panelBody.removeAll();
         for(PanelOptionToAdd panelOptionToAdd : optionsToAdd){
+            panelOptionToAdd.getButton().addActionListener(this);
+            panelOptionToAdd.getComboBox().addActionListener(this);
             panelBody.add(panelOptionToAdd.getPanel());
         }
         panelBodyHeight = 40 * optionsToAdd.size();
